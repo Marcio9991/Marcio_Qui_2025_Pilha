@@ -1,0 +1,3 @@
+salvamento:
+	@git config --global user.email marcioandrezjunior26@gmail.com
+	@git config --global user.name "Marcio"
