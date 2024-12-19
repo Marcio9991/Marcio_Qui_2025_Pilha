@@ -15,6 +15,13 @@ public class Pilha {
                 "Esolha", JOptionPane.QUESTION_MESSAGE);
         int n2 = Integer.parseInt(pergunta2);
 
+        if (n2 < n1) {
+            int t;
+            t = n1;
+            n1 = n2;
+            n2 = t;
+        }
+
         float[] potencialPilhas = new float[21];
 
         for (int i = 0; i < potencialPilhas.length; i++) {
@@ -135,9 +142,6 @@ public class Pilha {
         if (n1 < n2) {
             valorPilha2 = potencialPilhas[n1 - 1] - (potencialPilhas[n2 - 1]);
         }
-        if (n2 < n1) {
-            valorPilha2 = potencialPilhas[n2 - 1] - (potencialPilhas[n1 - 1]);
-        }
 
         if (valorPilha2 < 0) {
             valorPilha2 = valorPilha2 * -1;
@@ -145,32 +149,15 @@ public class Pilha {
 
         for (int j = 0; j < 1; j++) {
             if (n1 < n2) {
-                JOptionPane.showMessageDialog(null, "O metal que oxida é: " + pergunta1, "Definição pilha",
+                JOptionPane.showMessageDialog(null, "O metal que oxida é: " + n1, "Definição pilha",
                         JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.showMessageDialog(null, "O metal que reduz é: " + pergunta2, "Potencial pilha",
+                JOptionPane.showMessageDialog(null, "O metal que reduz é: " + n2, "Potencial pilha",
                         JOptionPane.INFORMATION_MESSAGE);
 
                 JOptionPane.showMessageDialog(null, "E.pilha = E.red - E.oxi", "Potencial pilha",
                         JOptionPane.INFORMATION_MESSAGE);
                 JOptionPane.showMessageDialog(null,
                         "E.pilha = ( " + potencialPilhas[n2] + " sólido) - ( " + potencialPilhas[n1] + " aquoso)",
-                        "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                JOptionPane.showMessageDialog(null, "E.pilha: " + valorPilha2 + " de V", "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-                break;
-            }
-            if (n2 > n1) {
-                JOptionPane.showMessageDialog(null, "O metal que oxida é: " + pergunta2, "Definição pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.showMessageDialog(null, "O metal que reduz é: " + pergunta1, "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                JOptionPane.showMessageDialog(null, "E.pilha = E.red - E.oxi", "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.showMessageDialog(null,
-                        "E.pilha = ( " + potencialPilhas[n1] + " sólido) - ( " + potencialPilhas[n2] + " aquoso)",
                         "Potencial pilha",
                         JOptionPane.INFORMATION_MESSAGE);
 
