@@ -31,8 +31,8 @@ public class Pilha {
 
             imprimir(potencialPilhas, valorPilha, oxida, reduz);
 
-            String pergunta3 = JOptionPane.showInputDialog(null, "Quer encerrar o programa ou continuar? (Responda com 'Sim' ou 'Não'", "Question", JOptionPane.QUESTION_MESSAGE);
-            if (pergunta3.equals("Não") == true) {
+            String pergunta3 = JOptionPane.showInputDialog(null, "Quer encerrar o programa? (Responda com 'Sim' ou 'Não'", "Question", JOptionPane.QUESTION_MESSAGE);
+            if (pergunta3.equals("Sim") == true) {
                 break;
             }
         }
