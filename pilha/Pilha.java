@@ -5,24 +5,80 @@ import javax.swing.JOptionPane;
 public class Pilha {
     public static void main(String[] args) {
 
-        String pergunta1 = JOptionPane.showInputDialog(null,
-                "Escolha o primeiro metal de acordo com o número: \n(Li-1, K-2, Cs-3, Ba-4, Sr-5, Ca-6, Na-7, Mg-8, Al-9, Mn-10, Zn-11, Fe-12, Co-13, Ni-14, Pb-15, H-16, Cu-17, Ag-18, Pd-19, Pt-20, Au-21) ",
-                "Esolha", JOptionPane.QUESTION_MESSAGE);
-        int n1 = Integer.parseInt(pergunta1);
+        while (true) {
+            String pergunta1 = JOptionPane.showInputDialog(null,
+                    "Escolha o primeiro metal de acordo com o número: \n(Li-1, K-2, Cs-3, Ba-4, Sr-5, Ca-6, Na-7, Mg-8, Al-9, Mn-10, Zn-11, Fe-12, Co-13, Ni-14, Pb-15, H-16, Cu-17, Ag-18, Pd-19, Pt-20, Au-21) ",
+                    "Esolha", JOptionPane.QUESTION_MESSAGE);
+            int oxida = Integer.parseInt(pergunta1);
 
-        String pergunta2 = JOptionPane.showInputDialog(null,
-                "Escolha o segundo metal de acordo com o número: \n(Li-1, K-2, Cs-3, Ba-4, Sr-5, Ca-6, Na-7, Mg-8, Al-9, Mn-10, Zn-11, Fe-12, Co-13, Ni-14, Pb-15, H-16, Cu-17, Ag-18, Pd-19, Pt-20, Au-21) ",
-                "Esolha", JOptionPane.QUESTION_MESSAGE);
-        int n2 = Integer.parseInt(pergunta2);
+            String pergunta2 = JOptionPane.showInputDialog(null,
+                    "Escolha o segundo metal de acordo com o número: \n(Li-1, K-2, Cs-3, Ba-4, Sr-5, Ca-6, Na-7, Mg-8, Al-9, Mn-10, Zn-11, Fe-12, Co-13, Ni-14, Pb-15, H-16, Cu-17, Ag-18, Pd-19, Pt-20, Au-21) ",
+                    "Esolha", JOptionPane.QUESTION_MESSAGE);
+            int reduz = Integer.parseInt(pergunta2);
 
-        if (n2 < n1) {
-            int t;
-            t = n1;
-            n1 = n2;
-            n2 = t;
+            if (reduz > oxida) {
+                int troca;
+                troca = oxida;
+                oxida = reduz;
+                reduz = troca;
+            }
+
+            float[] potencialPilhas = new float[21];
+            potencialPilhas = preencherPotenciais(potencialPilhas);
+
+            double valorPilha = 0;
+            valorPilha = calcularValorPilha(potencialPilhas, oxida - 1, reduz - 1);
+
+            imprimir(potencialPilhas, valorPilha, oxida, reduz);
+
+            String pergunta3 = JOptionPane.showInputDialog(null, "Quer encerrar o programa ou continuar? (Responda com 'Sim' ou 'Não'", "Question", JOptionPane.QUESTION_MESSAGE);
+            if (pergunta3.equals("Não") == true) {
+                break;
+            }
+        }
+    }
+
+    private static void imprimir(float[] potencialPilhas, double valorPilha, int oxida, int reduz) {
+
+        if (oxida > reduz) {
+            JOptionPane.showMessageDialog(null, "O metal que oxida é: " + oxida, "Definição pilha",
+                    JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "O metal que reduz é: " + reduz, "Potencial pilha",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "E.pilha = E.red - E.oxi", "Potencial pilha",
+                    JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "E.pilha = ( " + potencialPilhas[reduz] + " sólido) - ( " + potencialPilhas[oxida]
+                            + " aquoso)",
+                    "Potencial pilha",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "E.pilha: " + valorPilha + " de V", "Potencial pilha",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (oxida == reduz) {
+            JOptionPane.showMessageDialog(null, "Não funciona", "Definição pilha",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    private static double calcularValorPilha(float[] potencialPilhas, int oxida, int reduz) {
+
+        double calc = 0.0;
+
+        if (oxida > reduz) {
+            calc = potencialPilhas[oxida] - (potencialPilhas[reduz]);
         }
 
-        float[] potencialPilhas = new float[21];
+        if (calc < 0) {
+            calc *= -1;
+        }
+
+        return calc;
+    }
+
+    private static float[] preencherPotenciais(float[] potencialPilhas) {
 
         for (int i = 0; i < potencialPilhas.length; i++) {
             switch (i) {
@@ -137,38 +193,6 @@ public class Pilha {
             }
         }
 
-        double valorPilha2 = 0;
-
-        if (n1 < n2) {
-            valorPilha2 = potencialPilhas[n1 - 1] - (potencialPilhas[n2 - 1]);
-        }
-
-        if (valorPilha2 < 0) {
-            valorPilha2 = valorPilha2 * -1;
-        }
-
-        for (int j = 0; j < 1; j++) {
-            if (n1 < n2) {
-                JOptionPane.showMessageDialog(null, "O metal que oxida é: " + n1, "Definição pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.showMessageDialog(null, "O metal que reduz é: " + n2, "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                JOptionPane.showMessageDialog(null, "E.pilha = E.red - E.oxi", "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.showMessageDialog(null,
-                        "E.pilha = ( " + potencialPilhas[n2] + " sólido) - ( " + potencialPilhas[n1] + " aquoso)",
-                        "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                JOptionPane.showMessageDialog(null, "E.pilha: " + valorPilha2 + " de V", "Potencial pilha",
-                        JOptionPane.INFORMATION_MESSAGE);
-                break;
-            }
-            if (n1 == n2) {
-                JOptionPane.showMessageDialog(null, "Não funciona", "Definição pilha", JOptionPane.INFORMATION_MESSAGE);
-                break;
-            }
-        }
+        return potencialPilhas;
     }
 }
