@@ -16,34 +16,42 @@ public class Pilha {
                     "Esolha", JOptionPane.QUESTION_MESSAGE);
             int reduz = Integer.parseInt(pergunta2);
 
-            if (reduz > oxida) {
-                int troca;
-                troca = oxida;
-                oxida = reduz;
-                reduz = troca;
+            if (oxida == reduz) {
+                JOptionPane.showMessageDialog(null, "Não funciona", "Definição pilha",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                if (oxida < reduz) {
+                    int troca;
+                    troca = oxida;
+                    oxida = reduz;
+                    reduz = troca;
+                }
+
+                float[] potencialPilhas = new float[21];
+                potencialPilhas = preencherPotenciais(potencialPilhas);
+
+                double valorPilha = 0;
+                valorPilha = calcularValorPilha(potencialPilhas, oxida - 1, reduz - 1);
+
+                imprimir(potencialPilhas, valorPilha, oxida, reduz);
+
+                String pergunta3 = JOptionPane.showInputDialog(null,
+                        "Quer encerrar o programa? (Responda com 'Sim' ou 'Não'", "Question",
+                        JOptionPane.QUESTION_MESSAGE);
+                if (pergunta3.equals("Sim") == true) {
+                    break;
+                }
             }
 
-            float[] potencialPilhas = new float[21];
-            potencialPilhas = preencherPotenciais(potencialPilhas);
-
-            double valorPilha = 0;
-            valorPilha = calcularValorPilha(potencialPilhas, oxida - 1, reduz - 1);
-
-            imprimir(potencialPilhas, valorPilha, oxida, reduz);
-
-            String pergunta3 = JOptionPane.showInputDialog(null, "Quer encerrar o programa? (Responda com 'Sim' ou 'Não'", "Question", JOptionPane.QUESTION_MESSAGE);
-            if (pergunta3.equals("Sim") == true) {
-                break;
-            }
         }
     }
 
-    private static void imprimir(float[] potencialPilhas, double valorPilha, int oxida, int reduz) {
+    public static void imprimir(float[] potencialPilhas, double valorPilha, int oxida, int reduz) {
 
         if (oxida > reduz) {
-            JOptionPane.showMessageDialog(null, "O metal que oxida é: " + oxida, "Definição pilha",
+            JOptionPane.showMessageDialog(null, "O número do metal que oxida é: " + oxida, "Definição pilha",
                     JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(null, "O metal que reduz é: " + reduz, "Potencial pilha",
+            JOptionPane.showMessageDialog(null, "O número do metal que reduz é: " + reduz, "Definição pilha",
                     JOptionPane.INFORMATION_MESSAGE);
 
             JOptionPane.showMessageDialog(null, "E.pilha = E.red - E.oxi", "Potencial pilha",
@@ -55,10 +63,6 @@ public class Pilha {
                     JOptionPane.INFORMATION_MESSAGE);
 
             JOptionPane.showMessageDialog(null, "E.pilha: " + valorPilha + " de V", "Potencial pilha",
-                    JOptionPane.INFORMATION_MESSAGE);
-        }
-        if (oxida == reduz) {
-            JOptionPane.showMessageDialog(null, "Não funciona", "Definição pilha",
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }
@@ -84,107 +88,107 @@ public class Pilha {
             switch (i) {
                 case 1:
 
-                    potencialPilhas[i] = -304 / 100;
+                    potencialPilhas[i] = (float) -3.04;
                     break;
 
                 case 2:
 
-                    potencialPilhas[i] = -293 / 100;
+                    potencialPilhas[i] = (float) -2.93;
                     break;
 
                 case 3:
 
-                    potencialPilhas[i] = -292 / 100;
+                    potencialPilhas[i] = (float) -2.92;
                     break;
 
                 case 4:
 
-                    potencialPilhas[i] = -290 / 100;
+                    potencialPilhas[i] = (float) -2.90;
                     break;
 
                 case 5:
 
-                    potencialPilhas[i] = -289 / 100;
+                    potencialPilhas[i] = (float) -2.89;
                     break;
 
                 case 6:
 
-                    potencialPilhas[i] = -287 / 100;
+                    potencialPilhas[i] = (float) -2.87;
                     break;
 
                 case 7:
 
-                    potencialPilhas[i] = -271 / 100;
+                    potencialPilhas[i] = (float) -2.71;
                     break;
 
                 case 8:
 
-                    potencialPilhas[i] = -235 / 100;
+                    potencialPilhas[i] = (float) -2.35;
                     break;
 
                 case 9:
 
-                    potencialPilhas[i] = -166 / 100;
+                    potencialPilhas[i] = (float) -1.66;
                     break;
 
                 case 10:
 
-                    potencialPilhas[i] = -118 / 100;
+                    potencialPilhas[i] = (float) -1.18;
                     break;
 
                 case 11:
 
-                    potencialPilhas[i] = -76 / 100;
+                    potencialPilhas[i] = (float) -0.76;
                     break;
 
                 case 12:
 
-                    potencialPilhas[i] = -44 / 100;
+                    potencialPilhas[i] = (float) -0.44;
                     break;
 
                 case 13:
 
-                    potencialPilhas[i] = -28 / 100;
+                    potencialPilhas[i] = (float) -0.28;
                     break;
 
                 case 14:
 
-                    potencialPilhas[i] = -23 / 100;
+                    potencialPilhas[i] = (float) -0.23;
                     break;
 
                 case 15:
 
-                    potencialPilhas[i] = -13 / 100;
+                    potencialPilhas[i] = (float) -0.13;
                     break;
 
                 case 16:
 
-                    potencialPilhas[i] = -1 / 100;
+                    potencialPilhas[i] = (float) -0.01;
                     break;
 
                 case 17:
 
-                    potencialPilhas[i] = 34 / 100;
+                    potencialPilhas[i] = (float) 0.34;
                     break;
 
                 case 18:
 
-                    potencialPilhas[i] = 80 / 100;
+                    potencialPilhas[i] = (float) 0.80;
                     break;
 
                 case 19:
 
-                    potencialPilhas[i] = 20 / 100;
+                    potencialPilhas[i] = (float) 0.20;
                     break;
 
                 case 20:
 
-                    potencialPilhas[i] = 90 / 100;
+                    potencialPilhas[i] = (float) 0.90;
                     break;
 
                 case 21:
 
-                    potencialPilhas[i] = 150 / 100;
+                    potencialPilhas[i] = (float) 1.50;
                     break;
 
                 default:
