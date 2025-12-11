@@ -4,6 +4,8 @@ import java.util.Locale;
 
 import javax.swing.JOptionPane;
 
+// Atividade final: Colocar as reações, a de oxidação, a de redução e a global
+
 public class Pilha {
     public static void main(String[] args) {
 
@@ -44,9 +46,9 @@ public class Pilha {
                 imprimir(potencialPilhasReduz, valorPilha, oxida, reduz, metais);
 
                 String pergunta3 = JOptionPane.showInputDialog(null,
-                        "Quer encerrar o programa? (Responda com 'Ss' ou 'Nn'", "Question",
+                        "Quer continuar no programa? (Responda com 'Ss' ou 'Nn'", "Question",
                         JOptionPane.QUESTION_MESSAGE);
-                if (pergunta3.equals("Ss") == true) {
+                if ((pergunta3.equals("Nn") == true) || (pergunta3.equals("nn")) || (pergunta3.equals("nN")) || (pergunta3.equals("NN"))) {
                     break;
                 }
             }
