@@ -219,8 +219,6 @@ public class Pilha {
 
     private static String[] preencherMetais(String[] metais) {
 
-        // Li-1, K-2, Cs-3, Ba-4, Sr-5, Ca-6, Na-7, Mg-8, Al-9, Mn-10,
-
         for (int i = 0; i < metais.length; i++) {
             switch (i) {
                 case 0:
