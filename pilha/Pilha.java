@@ -42,9 +42,12 @@ public class Pilha {
 
                 double valorPilha = 0;
                 valorPilha = calcularValorPilha(potencialPilhasReduz, potencialPilhasOxida, oxida - 1, reduz - 1);
-
-                imprimir(potencialPilhasReduz, valorPilha, oxida, reduz, metais);
-
+                if (valorPilha < 0) {
+                    JOptionPane.showMessageDialog(null, "Não funciona", "Definição pilha",
+                        JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    imprimir(potencialPilhasReduz, valorPilha, oxida, reduz, metais);
+                }
                 String pergunta3 = JOptionPane.showInputDialog(null,
                         "Quer continuar no programa? (Responda com 'Ss' ou 'Nn'", "Question",
                         JOptionPane.QUESTION_MESSAGE);
@@ -61,11 +64,11 @@ public class Pilha {
         String valorFormatado = String.format(Locale.US, "%.2f", valorPilha);
 
         if (oxida > reduz) {
-            JOptionPane.showMessageDialog(null, "O número do metal que oxida é: " + metais[oxida - 1],
+            JOptionPane.showMessageDialog(null, "O do metal que oxida é: " + metais[oxida - 1],
                     "Definição pilha",
                     JOptionPane.INFORMATION_MESSAGE);
 
-            JOptionPane.showMessageDialog(null, "O número do metal que reduz é: " + metais[reduz - 1],
+            JOptionPane.showMessageDialog(null, "O do metal que reduz é: " + metais[reduz - 1],
                     "Definição pilha",
                     JOptionPane.INFORMATION_MESSAGE);
 
@@ -88,10 +91,6 @@ public class Pilha {
 
         if (oxida > reduz) {
             calc = potencialPilhasOxida[oxida] - (potencialPilhasReduz[reduz]);
-        }
-
-        if (calc < 0) {
-            calc *= -1;
         }
 
         return calc;
@@ -311,3 +310,4 @@ public class Pilha {
         return metais;
     }
 }
+
